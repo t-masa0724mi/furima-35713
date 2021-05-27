@@ -1,59 +1,24 @@
-# テーブル設計
+# README
 
-## users テーブル
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-| Column          | Type        | Options                        |
-|-----------------|-------------|--------------------------------|
-| nickname        | string      | null: false                    |
-| email           | string      | null: false                    |
-| password        | string      | null: false                    |
-| last_name       | string      | null: false                    |
-| first_name      | string      | null: false                    |
-| kana_last_name  | string      | null: false                    |
-| kana_first_name | string      | null: false                    |
-| birth_year      | string      | null: false                    |
-| birth_month     | string      | null: false                    |
-| birth_day       | string      | null: false                    |
+Things you may want to cover:
 
-### Association
--has_many   :items
--has_many   :purchases
+* Ruby version
 
-## items テーブル
+* System dependencies
 
-| Column          | Type        | Options                        |
-|-----------------|-------------|--------------------------------|
-| item_name       | string      | null: false                    |
-| description     | text        | null: false                    |
-| price           | integer     | null: false                    |
-| user_id         | references  | null: false, foreign_key: true |
+* Configuration
 
-### Association
--belongs_to : user
--has_one    : purchase
+* Database creation
 
-## purchases テーブル
+* Database initialization
 
-| Column          | Type        | Options                        |
-|-----------------|-------------|--------------------------------|
-| user_id         | references  | null: false, foreign_key: true |
-| item_id         | references  | null: false, foreign_key: true |
+* How to run the test suite
 
-### Association
--has_one    :shipping_address
--belongs_to :user
--belongs_to :items
+* Services (job queues, cache servers, search engines, etc.)
 
-## Shipping_Addresses テーブル
+* Deployment instructions
 
-| Column          | Type        | Options                        |
-|-----------------|-------------|--------------------------------|
-| postal_code     | integer     | null: false                    |
-| municipality    | string      | null: false                    |
-| house-number    | integer     | null: false                    |
-| building_name   | integer     |                                |
-| phone_number    | integer     | null: false                    |
-| purchase_id     | references  | null: false, foreign_key: true |
-
-### Association 
--belongs_to :purchase
+* ...
