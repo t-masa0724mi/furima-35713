@@ -7,31 +7,7 @@ RSpec.describe User, type: :model do
 
   describe 'ユーザー新規登録' do
     context 'ユーザーが新規登録できる時' do
-      it 'nicknameの値が存在すれば登録できること' do
-        expect(@user).to be_valid
-      end
-      it 'emailの値が存在すれば登録できること' do
-        expect(@user).to be_valid
-      end
-      it 'passwordの値が存在すれば登録できること' do
-        expect(@user).to be_valid
-      end
-      it 'last_namevの値が存在すれば登録できること' do
-        expect(@user).to be_valid  
-      end
-      it 'first_nameの値が存在すれば登録できること' do
-        expect(@user).to be_valid
-      end  
-      it 'kana_last_nameの値が存在すれば登録できること' do
-        expect(@user).to be_valid
-      end
-      it 'kana_first_nameの値が存在すれば登録できること' do
-        expect(@user).to be_valid
-      end
-      it 'birthdayの値が存在すれば登録できること' do
-        expect(@user).to be_valid
-      end    
-      it 'passwordが6文字以上であれば登録できること' do
+      it '全ての値が存在すれば登録できること' do
         expect(@user).to be_valid
       end
     end
@@ -44,7 +20,7 @@ RSpec.describe User, type: :model do
       it 'emailが空では登録できない' do
         @user.email = ''
         @user.valid?
-        expect(@user.errors.full_messages).to(include"Email can't be blank")
+        expect(@user.errors.full_messages).to include("Email can't be blank")
       end  
       it '同じメールアドレスは登録できないこと' do
         @user.save
@@ -53,6 +29,9 @@ RSpec.describe User, type: :model do
         expect(another_user.errors.full_messages).to include('Email has already been taken')
       end  
       it '@を含めない場合は登録できないこと' do
+        @user.email = 's100.iizuka.masamigmail.com'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end  
       it 'passwordが空では登録できない' do
         @user.password = ''
