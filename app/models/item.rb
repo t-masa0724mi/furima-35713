@@ -13,7 +13,7 @@ class Item < ApplicationRecord
     validates :image
     validates :name
     validates :description
-    validates :price, format: {with: /\A[0-9]+\z/}
+    validates :price, numericality: { only_integer: true }
     validates_inclusion_of :price, in:300..9999999
 
     with_options numericality: { other_than: 1 } do
