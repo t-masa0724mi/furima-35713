@@ -2,6 +2,7 @@ class PurchasesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item, only: [:index, :create]
   before_action :ensure_user
+  before_action :ensure
 
   def index
     @purchase  = PurchaseShippingAddress.new
@@ -48,5 +49,9 @@ class PurchasesController < ApplicationController
     end  
   end    
 
-  
+  def ensure
+    @item.purchase.present?
+    redirect_to root_path    
+  end
+
 end

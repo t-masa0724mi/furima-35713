@@ -55,10 +55,6 @@ class ItemsController < ApplicationController
     end  
   end    
 
-  # def purchase
-  #   @purchase = PurchaseShippingAddress.new(purchase_params)
-  # end
-
   def ensure
     if @item.purchase.present?
       redirect_to root_path
