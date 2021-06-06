@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, only: [:edit, :show, :update, :destroy]
   before_action :ensure_user, only: [:edit, :update, :destroy]
+  before_action :ensure, only: [:edit]
 
   def index
     @items = Item.order("created_at DESC")
@@ -53,4 +54,14 @@ class ItemsController < ApplicationController
       redirect_to root_path
     end  
   end    
+
+  # def purchase
+  #   @purchase = PurchaseShippingAddress.new(purchase_params)
+  # end
+
+  def ensure
+    if @item.purchase.present?
+      redirect_to root_path
+    end  
+  end  
 end
