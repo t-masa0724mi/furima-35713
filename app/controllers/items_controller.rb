@@ -58,6 +58,6 @@ class ItemsController < ApplicationController
   def ensure
     if @item.purchase.present?
       redirect_to root_path
-    end  
-  end  
+    end
+  end   
 end

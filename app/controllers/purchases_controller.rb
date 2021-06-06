@@ -50,8 +50,9 @@ class PurchasesController < ApplicationController
   end    
 
   def ensure
-    @item.purchase.present?
-    redirect_to root_path    
+    if  @item.purchase.present?
+      redirect_to root_path    
+    end  
   end
 
 end
