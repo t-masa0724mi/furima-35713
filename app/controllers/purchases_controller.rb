@@ -1,8 +1,8 @@
 class PurchasesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:index, :create]
   before_action :set_item, only: [:index, :create]
-  before_action :ensure_user
-  before_action :ensure
+  before_action :ensure_user, only: [:index, :create]
+  before_action :ensure, only: [:index, :create]
 
   def index
     @purchase  = PurchaseShippingAddress.new

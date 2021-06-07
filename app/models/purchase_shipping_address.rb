@@ -11,7 +11,9 @@ class PurchaseShippingAddress
     validates :municipality
     validates :house_number
     validates :phone_number, length: { maximum: 11, message: 'is too long' }
+    validates :phone_number, length: { minimum: 10, message: 'is too short'}
     validates :phone_number, numericality: { only_integer: true}
+    
     validates :token
   end
   
