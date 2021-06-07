@@ -10,12 +10,11 @@ class PurchaseShippingAddress
     validates :shipping_area_id, numericality: { other_than: 1 }
     validates :municipality
     validates :house_number
-    validates :phone_number, length: { maximum: 11, message: 'is too long' }
-    validates :phone_number, length: { minimum: 10, message: 'is too short'}
     validates :phone_number, numericality: { only_integer: true}
-    
     validates :token
   end
+  validates :phone_number, length: { maximum: 11, message: 'is too long' }
+  validates :phone_number, length: { minimum: 10, message: 'is too short'}
   
 
   def save
