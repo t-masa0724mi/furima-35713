@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   has_one_attached :image
   
   with_options presence: true do
-    validates :image
+    validates :image 
     validates :name
     validates :description
     validates :price, numericality: { only_integer: true }

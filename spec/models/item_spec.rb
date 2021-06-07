@@ -42,7 +42,7 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping charge must be other than 1")
       end  
-      it 'shipping_area_idが空では登録出来ない' do
+      it 'shipping_area_idが1では登録出来ない' do
         @item.shipping_area_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping area must be other than 1")
